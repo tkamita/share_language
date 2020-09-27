@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Feature extends Model
+class Prefecture extends Model
 {
     protected $fillable = [
-        'content',
+        'name',
     ];
 
     public function residences() {
