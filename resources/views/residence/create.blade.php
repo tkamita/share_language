@@ -1,55 +1,130 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-md-8 mt-5">
-      <h3 class="text-center">東京都のシェアハウス</h3>
-      <ul class="nav nav-pills justify-content-center">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bullseye"></i>特徴から探す
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">少人数</a>
-            <a class="dropdown-item" href="#">女性専用</a>
-            <a class="dropdown-item" href="#">学生専用</a>
-            <a class="dropdown-item" href="#">総額７万円以下</a>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="card mt-5 col-md-8">
+      <h5 class="card-header bg-white font-weight-bold">新規物件登録</h5>
+      @include('components.error')
+      <div class="card-body">
+        <form action="{{ route('residences.store') }}" method="post" enctype="multipart/form-data">
+          @csrf
+          <div class="form-group row">
+            <label for="image" class="col-sm-2 col-form-label">画像</label>
+            <div class="col-sm-10">
+              <input type="file" class="form-control-file" id="image" name="file_name" >
+            </div>
           </div>
-        </li>
-      </ul>
-    </div>
-    <div class="border col-md-12 mb-5"></div>
-    <div class="col-md-8">
-      <div class="d-flex flex-row bd-highlight mb-3 row">
-        <div class="card m-3 pb-3 col-md-5" style="width: 18rem;">
-          <img src="img/932772_m.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">新宿</h5>
-            <p class="card-text">ミッドセンチュリー期のインダストリアルデザインを彷彿させるヴィンテージ感あふれるオシャレなシュアハウスです。</p>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">物件名</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="name" name="name">
+            </div>
           </div>
-          <a href="#" class="btn btn-primary">詳しくみる</a>
-        </div>
-        <div class="card m-3 pb-3 col-md-5" style="width: 18rem;">
-          <img src="img/932772_m.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">渋谷</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.afdafdfsadfdsafdsafdsfsadfsad</p>
+          <div class="form-group row">
+            <label for="introduction" class="col-sm-2 col-form-label">紹介文</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" id="introduction" name="introduction" rows="3"></textarea>
+            </div>
           </div>
-          <a href="#" class="btn btn-primary">詳しくみる</a>
-        </div>
-        <div class="card m-3 pb-3 col-md-5" style="width: 18rem;">
-          <img src="img/932772_m.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">池袋</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="form-group row">
+            <label for="prefecture" class="col-sm-2 col-form-label">都道府県</label>
+            <div class="col-sm-10">
+              <select class="custom-select" id="inputGroupSelect02" name="prefecture">
+                <option selected>Choose...</option>
+                @foreach($prefectures as $pref)
+                  <option value="{{ $pref->id }}">{{ $pref->name }}</option>
+                @endforeach
+              </select>
+            </div>
           </div>
-          <a href="#" class="btn btn-primary">詳しくみる</a>
-        </div>
+          <div class="form-group row">
+            <label for="location" class="col-sm-2 col-form-label">住所</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="location" name="location">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="minimum_rent" class="col-sm-2 col-form-label">下限家賃</label>
+            <div class="col-sm-10 input-group">
+              <input type="number" class="form-control" id="minimum_rent" name="minimum_rent">
+              <div class="input-group-append">
+                <span class="input-group-text">円</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="maximum_rent" class="col-sm-2 col-form-label">上限家賃</label>
+            <div class="col-sm-10 input-group">
+              <input type="number" class="form-control" id="maximum_rent" name="maximum_rent">
+              <div class="input-group-append">
+                <span class="input-group-text">円</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="common_charge" class="col-sm-2 col-form-label">共益費</label>
+            <div class="col-sm-10 input-group">
+              <input type="number" class="form-control" id="common_charge" name="common_charge">
+              <div class="input-group-append">
+                <span class="input-group-text">円</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="term" class="col-sm-2 col-form-label">契約期間</label>
+            <div class="col-sm-10 input-group">
+              <input type="number" class="form-control" id="term" name="term">
+              <div class="input-group-append">
+                <span class="input-group-text">ヶ月</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="room_num" class="col-sm-2 col-form-label">部屋数</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="room_num" name="room_num">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="wifi" class="col-sm-2 col-form-label">wi-fi</label>
+            <div class="col-sm-10">
+              <select class="custom-select" id="inputGroupSelect02" name="wifi">
+                <option value="0">無し</option>
+                <option value="1">有り</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">駐輪場</label>
+            <div class="col-sm-10">
+              <select class="custom-select" id="inputGroupSelect02" name="bicycle">
+                <option value="0">無し</option>
+                <option value="1">有り</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">駐車場</label>
+            <div class="col-sm-10">
+              <select class="custom-select" id="inputGroupSelect02" name="parking">
+                <option value="0">無し</option>
+                <option value="1">有り</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">バイク置き場</label>
+            <div class="col-sm-10">
+              <select class="custom-select" id="inputGroupSelect02" name="motorcycle">
+                <option value="0">無し</option>
+                <option value="1">有り</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="mt-5 btn btn-primary btn-lg btn-block">新規登録</button>
+        </form>
       </div>
-    </div>
-    <div class="col-md-4">
-      @include('components.sidebar')
     </div>
   </div>
 </div>

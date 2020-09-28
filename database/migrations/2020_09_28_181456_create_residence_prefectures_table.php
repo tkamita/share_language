@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResidencePrefsTable extends Migration
+class CreateResidencePrefecturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateResidencePrefsTable extends Migration
      */
     public function up()
     {
-        Schema::create('residence_prefs', function (Blueprint $table) {
+        Schema::create('residence_prefectures', function (Blueprint $table) {
             $table->id();
             $table->foreignId('residence_id')->constrained()->onDelete('cascade');
             $table->foreignId('prefecture_id')->constrained()->onDelete('cascade');
@@ -28,6 +28,6 @@ class CreateResidencePrefsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('residence_prefs');
+        Schema::dropIfExists('residence_prefectures');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Residence;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -16,5 +17,6 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserSeeder::class);
         $this->call(ResidencesTableSeeder::class);
+        $this->call(PrefecturesSeeder::class);
     }
 }
