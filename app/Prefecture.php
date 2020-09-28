@@ -11,6 +11,8 @@ class Prefecture extends Model
     ];
 
     public function residences() {
-        return $this->belongsToMany('App\Residence');
+        return $this->hasMany('App\Residence');
+        // return $this->belongsToMany('App\Residence');
+        // return $this->belongsToMany('App\Residence', 'residence_prefectures', 'prefecture_id', 'residence_id');
     }
 }

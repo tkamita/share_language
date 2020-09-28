@@ -122,7 +122,8 @@
       </div>
     </div>
     <div class="col-md-4">
-      <button type="button" class="btn btn-primary btn-lg mb-5">検討リストに入れる</button>
+      <button type="button" class="btn btn-primary btn-block mb-5">検討リストに入れる</button>
+      <a href="{{ route('residences.edit', $residence->id) }}" class="btn btn-secondary btn-block mb-5">編集する</a>
       @include('components.sidebar')
     </div>
   </div>

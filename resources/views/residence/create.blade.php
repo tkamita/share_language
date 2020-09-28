@@ -30,7 +30,7 @@
           <div class="form-group row">
             <label for="prefecture" class="col-sm-2 col-form-label">都道府県</label>
             <div class="col-sm-10">
-              <select class="custom-select" id="inputGroupSelect02" name="prefecture">
+              <select class="custom-select" id="inputGroupSelect02" name="prefecture_id">
                 <option selected>Choose...</option>
                 @foreach($prefectures as $pref)
                   <option value="{{ $pref->id }}">{{ $pref->name }}</option>

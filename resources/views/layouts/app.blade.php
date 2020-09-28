@@ -25,7 +25,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top mb-5">
       <div class="container">
-        <a class="navbar-brand" href="{{ url('/home') }}">share language</a>
+        <a class="navbar-brand" href="{{ url('/') }}">share language</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,7 +38,7 @@
           <!-- Authentication Links -->
             @guest
               <li class="nav-item" >
-                <a class="nav-link" href="/home"><i class="fas fa-home"></i> Home</a>
+                <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
               </li>
               <li class="nav-item" >
                 <a class="nav-link" href="#"><i class="fas fa-eject"></i> About</a>

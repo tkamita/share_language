@@ -18,9 +18,10 @@ class Residence extends Model
         // return $this->belongsToMany('App\Feature', 'role_user', 'user_id', 'role_id');
     }
 
-    public function prefectures() {
-        return $this->belongsToMany('App\Prefecture');
+    public function prefecture() {
+        return $this->belongsTo('App\Prefecture');
     }
+    
 
     public function images() {
         return $this->hasMany(Image::class);

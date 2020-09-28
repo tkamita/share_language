@@ -35,14 +35,13 @@ class ResidenceController extends Controller
             'room_num' => 'required',
         ]);
 
-        $prefecture_id = Prefecture::find('id');
         
         $residence = new Residence;
         $form = $request->all();
+        $residence->prefecture_id = $request->prefecture_id;
         unset($form['_token']);
-        $residence->prefectures()->attach($prefecture_id);
         $residence->fill($form)->save();
-
+        
         $image = new Image;
         $image->file_name = $request->file_name;
         $image->residence_id = $residence->id;
