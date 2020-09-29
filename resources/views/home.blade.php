@@ -68,20 +68,28 @@
       <div class="card-body">
         <ul class="list-group">
           <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
-            東京都
-            <span class="badge badge-primary badge-pill">14</span>
+            <a href="{{ route('prefectures.show', $prefectures[2]->id) }}">
+              {{ $prefectures[2]->name }}
+            </a>
+            <span class="badge badge-primary badge-pill">{{ $prefectures[2]->residences->count() }}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
-            千葉県
-            <span class="badge badge-primary badge-pill">2</span>
+            <a href="{{ route('prefectures.show', $prefectures[1]->id) }}">
+              {{ $prefectures[1]->name }}
+            </a>
+            <span class="badge badge-primary badge-pill">{{ $prefectures[1]->residences->count() }}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
-            埼玉県
-            <span class="badge badge-primary badge-pill">1</span>
+            <a href="{{ route('prefectures.show', $prefectures[0]->id) }}">
+              {{ $prefectures[0]->name }}
+            </a>
+            <span class="badge badge-primary badge-pill">{{ $prefectures[0]->residences->count() }}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
-            神奈川県
-            <span class="badge badge-primary badge-pill">1</span>
+            <a href="{{ route('prefectures.show', $prefectures[3]->id) }}">
+              {{ $prefectures[3]->name }}
+            </a>
+            <span class="badge badge-primary badge-pill">{{ $prefectures[3]->residences->count() }}</span>
           </li>
         </ul>
       </div>
