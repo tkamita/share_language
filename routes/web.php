@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('residences', 'ResidenceController');
+Route::resource('prefectures', 'PrefectureController');
 
 
 // Route::group(['middleware' => ['auth']], function(){
