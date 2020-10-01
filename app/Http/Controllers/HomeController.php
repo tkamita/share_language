@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Prefecture;
+use App\Feature;
 
 class HomeController extends Controller
 {
@@ -24,16 +25,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $prefectures = Prefecture::all();
+        $features = Feature::all();
         $query = Prefecture::query();
-        // $query->where('user_id',1); 
-        // $query->where('status',1);
         $query->whereIn('id',[12,13,14,15]);
         $prefectures = $query->get();
-        // $prefectures = Prefecture::find(12, 13, 14, 15);
         $params = [
             'prefectures' => $prefectures,
+            'features' => $features,
         ];
         return view('home', $params);
+    }
+
+    public function top() {
+        return view('top');
     }
 }
