@@ -93,7 +93,6 @@ class ResidenceController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'introduction' => 'required',
-            'lacation' => 'required',
             'minimum_rent' => 'required',
             'maximum_rent' => 'required',
             'common_charge' => 'required',
@@ -104,6 +103,16 @@ class ResidenceController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $residence->fill($form)->save();
+
+        if($request['file_name']) {
+            $image = new Image;
+            $image->residence_id = $residence->id;
+            $image->file_name = $request->file_name;
+            $filename = $request->file('file_name')->store('public/img');
+            $image->file_name = str_replace('public/img','',$filename);
+            $image->save();
+        }
+        
         return redirect()->route('residences.show', $residence);
     }
 

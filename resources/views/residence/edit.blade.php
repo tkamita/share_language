@@ -4,7 +4,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="card mt-5 col-md-8">
-      <h5 class="card-header bg-white font-weight-bold">新規物件登録</h5>
+      <h5 class="card-header bg-white font-weight-bold">物件情報変更</h5>
       @include('components.error')
       <div class="card-body">
         <form action="{{ route('residences.update', $residence->id) }}" method="post" enctype="multipart/form-data">
@@ -12,11 +12,15 @@
           @csrf
           <div class="form-group row">
             <label for="image" class="col-sm-2 col-form-label">画像</label>
-            <div class="col-sm-10">
-              <div class="mt-3 pb-3 col-md-3" style="width: 18rem;">
-                <img src="/img/1685623_s.jpg" alt="" class="w-100">
-                <a href="{{ route('residences.show', $residence->id) }}" class="btn btn-danger btn-block btn-sm">削除</a>
-              </div>
+            <div class="col-sm-10 d-flex flex-row">
+              @foreach($residence->images as $image)
+                <div class="mt-3 pb-3 col-md-3" style="width: 18rem;">
+                  <img src="{{ asset('storage/img'.$image->file_name) }}" alt="" class="w-100">
+                  <a href="{{ route('images.show', $image->id) }}" class="btn btn-danger btn-block btn-sm">編集画面へ</a>
+                </div>
+              @endforeach
+            </div>
+            <div class="col-sm-10 offset-2">
               <input type="file" class="form-control-file" id="image" name="file_name" >
             </div>
           </div>
@@ -36,7 +40,7 @@
             <label for="prefecture" class="col-sm-2 col-form-label">都道府県</label>
             <div class="col-sm-10">
               <select class="custom-select" id="inputGroupSelect02" name="prefecture">
-                <option selected>Choose...</option>
+                <option selected>{{ $residence->prefecture->name }}</option>
                 @foreach($prefectures as $pref)
                   <option value="{{ $pref->id }}">{{ $pref->name }}</option>
                 @endforeach
@@ -95,9 +99,13 @@
             <label for="wifi" class="col-sm-2 col-form-label">wi-fi</label>
             <div class="col-sm-10">
               <select class="custom-select" id="inputGroupSelect02" name="wifi">
-                <option selected>Choose...</option>
-                <option value="0">無し</option>
-                <option value="1">有り</option>
+                @if($residence->wifi === 0)
+                  <option value="0" selected>無し</option>
+                  <option value="1">有り</option>
+                @else
+                  <option value="1" selected>有り</option>
+                  <option value="0">無し</option>
+                @endif
               </select>
             </div>
           </div>
@@ -105,9 +113,13 @@
             <label for="inputPassword" class="col-sm-2 col-form-label">駐輪場</label>
             <div class="col-sm-10">
               <select class="custom-select" id="inputGroupSelect02" name="bicycle">
-                <option selected>Choose...</option>
-                <option value="0">無し</option>
-                <option value="1">有り</option>
+                @if($residence->bicycle === 0)
+                  <option value="0" selected>無し</option>
+                  <option value="1">有り</option>
+                @else
+                  <option value="1" selected>有り</option>
+                  <option value="0">無し</option>
+                @endif
               </select>
             </div>
           </div>
@@ -115,9 +127,13 @@
             <label for="inputPassword" class="col-sm-2 col-form-label">駐車場</label>
             <div class="col-sm-10">
               <select class="custom-select" id="inputGroupSelect02" name="parking">
-                <option selected>Choose...</option>
-                <option value="0">無し</option>
-                <option value="1">有り</option>
+                @if($residence->parking === 0)
+                  <option value="0" selected>無し</option>
+                  <option value="1">有り</option>
+                @else
+                  <option value="1" selected>有り</option>
+                  <option value="0">無し</option>
+                @endif
               </select>
             </div>
           </div>
@@ -125,9 +141,13 @@
             <label for="inputPassword" class="col-sm-2 col-form-label">バイク置き場</label>
             <div class="col-sm-10">
               <select class="custom-select" id="inputGroupSelect02" name="motorcycle">
-                <option selected>Choose...</option>
-                <option value="0">無し</option>
-                <option value="1">有り</option>
+                @if($residence->motorcycle === 0)
+                  <option value="0" selected>無し</option>
+                  <option value="1">有り</option>
+                @else
+                  <option value="1" selected>有り</option>
+                  <option value="0">無し</option>
+                @endif
               </select>
             </div>
           </div>
