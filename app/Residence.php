@@ -13,9 +13,13 @@ class Residence extends Model
         'bicycle', 'parking', 'motorcycle',
     ];
 
-    public function features() {
-        return $this->belongsToMany('App\Feature');
-        // return $this->belongsToMany('App\Feature', 'role_user', 'user_id', 'role_id');
+    // public function features() {
+    //     return $this->belongsToMany('App\Feature');
+    //     return $this->belongsToMany('App\Feature', 'role_user', 'user_id', 'role_id');
+    // }
+
+    public function residence_features() {
+        return $this->hasMany(ResidenceFeature::class);
     }
 
     public function prefecture() {

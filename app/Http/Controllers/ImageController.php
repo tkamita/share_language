@@ -20,6 +20,6 @@ class ImageController extends Controller
     public function destroy($id) {
         $image = Image::find($id);
         $image->delete();
-        return redirect()->view('/');
+        return redirect()->route('residences.edit', $image->residence_id);
     }
 }

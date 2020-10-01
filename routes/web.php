@@ -20,9 +20,11 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('top', 'HomeController@top');
 Route::resource('residences', 'ResidenceController');
 Route::resource('prefectures', 'PrefectureController');
 Route::resource('images', 'ImageController');
+Route::resource('features', 'FeatureController');
 
 
 // Route::group(['middleware' => ['auth']], function(){

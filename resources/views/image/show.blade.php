@@ -13,7 +13,7 @@
             <img src="{{ asset('storage/img'.$image->file_name) }}" alt="" class="">
             <input type="hidden" name="id" value="{{ $image->id }}">
             <input type="submit" class="btn btn-danger btn-block mt-3" value="削除する">
-            <a href="{{ route('residences.edit', $residence->id) }}" class="btn btn-secondary btn-block mb-5">戻る</a>
+            <a href="{{ route('residences.edit', $image->residence_id) }}" class="btn btn-secondary btn-block mb-5">戻る</a>
           </div>
         </form>
       </div>

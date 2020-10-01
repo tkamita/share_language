@@ -100,10 +100,15 @@
       </div>
       <div class="card-body">
         <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
-            少人数
-            <span class="badge badge-primary badge-pill">14</span>
-          </li>
+          @foreach($features as $feature)
+            <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
+              少人数
+              <a href="{{ route('features.show', $feature->id) }}">
+                {{ $feature->content }}
+              </a>
+              <span class="badge badge-primary badge-pill">{{ $feature->residences->count() }}</span>
+            </li>
+          @endforeach
           <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
             女性専用
             <span class="badge badge-primary badge-pill">2</span>
