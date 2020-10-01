@@ -9,51 +9,29 @@
     <div class="border col-md-12 mb-5 mt-3"></div>
     <div class="col-md-8 mt-2">
       <div class="d-flex flex-row bd-highlight mb-3 row">
-        <div class="mt-3 pb-3 col-md-3" style="width: 18rem;">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal">
-            <img src="/img/1685623_s.jpg" alt="" class="w-100">
-          </button>
-        </div>
-          <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <img src="/img/1685623_s.jpg" alt="" class="w-100">
+        @foreach($residence->images as $image)
+          <div class="mt-3 pb-3 col-md-3" style="width: 18rem;">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal">
+              <img src="{{ asset('storage/img'.$image->file_name) }}" alt="" class="w-100">
+            </button>
+          </div>
+            <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <img src="{{ asset('storage/img'.$image->file_name) }}" alt="" class="w-100">
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="mt-3 pb-3 col-md-3" style="width: 18rem;">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal">
-            <img src="/img/1685623_s.jpg" alt="" class="w-100">
-          </button>
-        </div>
-        <div class="mt-3 pb-3 col-md-3" style="width: 18rem;">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal">
-            <img src="/img/1685623_s.jpg" alt="" class="w-100">
-          </button>
-        </div>
-        <div class="mt-3 pb-3 col-md-3" style="width: 18rem;">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal">
-            <img src="/img/1685623_s.jpg" alt="" class="w-100">
-          </button>
-        </div>
-        <div class="mt-3 pb-3 col-md-3" style="width: 18rem;">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal">
-            <img src="/img/1685623_s.jpg" alt="" class="w-100">
-          </button>
-        </div>
+        @endforeach
       </div>
       <div class="row">
         <table class="table">
