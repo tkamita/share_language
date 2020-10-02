@@ -14,7 +14,7 @@ class Residence extends Model
     ];
 
     public function features() {
-        return $this->belongsToMany('App\Feature', 'residence_feature', 'residence_id', 'feature_id');
+        return $this->belongsToMany('App\Feature', 'residence_features', 'residence_id', 'feature_id');
     }
 
     // public function residence_features() {

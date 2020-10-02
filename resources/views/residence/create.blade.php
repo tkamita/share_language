@@ -22,6 +22,17 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="feature" class="col-sm-2 col-form-label">特徴</label>
+            <div class="col-sm-10">
+              @foreach($features as $feature)
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="feature" value="{{ $feature->id }}" name="features[]">
+                  <label class="form-check-label" for="feature">{{ $feature->content }}</label>
+                </div>
+              @endforeach
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="introduction" class="col-sm-2 col-form-label">紹介文</label>
             <div class="col-sm-10">
               <textarea class="form-control" id="introduction" name="introduction" rows="3"></textarea>
