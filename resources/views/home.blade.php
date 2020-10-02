@@ -63,7 +63,7 @@
   <div class="row justify-content-center">
     <div class="card text-center m-3 col-md-4">
       <div class="card-header bg-white">
-        <i class="fas fa-map-marker-alt"></i>地域から探す
+        <i class="fas fa-map-marker-alt"></i> 地域から探す
       </div>
       <div class="card-body">
         <ul class="list-group">
@@ -100,26 +100,29 @@
       </div>
       <div class="card-body">
         <ul class="list-group">
-          @foreach($features as $feature)
-            <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
-              少人数
-              <a href="{{ route('features.show', $feature->id) }}">
-                {{ $feature->content }}
-              </a>
-              <span class="badge badge-primary badge-pill">{{ $feature->residences->count() }}</span>
-            </li>
-          @endforeach
           <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
-            女性専用
-            <span class="badge badge-primary badge-pill">2</span>
+            <a href="{{ route('features.show', $features[0]->id) }}">
+              {{ $features[0]->content }}
+            </a>
+            <span class="badge badge-primary badge-pill">{{ $features[0]->residences->count() }}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
-            学生専用
-            <span class="badge badge-primary badge-pill">1</span>
+            <a href="{{ route('features.show', $features[1]->id) }}">
+              {{ $features[1]->content }}
+            </a>
+            <span class="badge badge-primary badge-pill">{{ $features[1]->residences->count() }}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
-            総額７万円以下
-            <span class="badge badge-primary badge-pill">1</span>
+            <a href="{{ route('features.show', $features[2]->id) }}">
+              {{ $features[2]->content }}
+            </a>
+            <span class="badge badge-primary badge-pill">{{ $features[2]->residences->count() }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center border-top-0 border-left-0 border-right-0">
+            <a href="{{ route('features.show', $features[3]->id) }}">
+              {{ $features[3]->content }}
+            </a>
+            <span class="badge badge-primary badge-pill">{{ $features[3]->residences->count() }}</span>
           </li>
         </ul>
       </div>

@@ -11,10 +11,9 @@
             <i class="fas fa-bullseye"></i>特徴から探す
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">少人数</a>
-            <a class="dropdown-item" href="#">女性専用</a>
-            <a class="dropdown-item" href="#">学生専用</a>
-            <a class="dropdown-item" href="#">総額７万円以下</a>
+            @foreach($features as $feature)
+              <a class="dropdown-item" href="#">{{ $feature->content }}</a>
+            @endforeach
           </div>
         </li>
       </ul>
@@ -32,27 +31,6 @@
           <a href="{{ route('residences.show', $residence->id) }}" class="btn btn-primary">詳しくみる</a>
         </div>
         @endforeach
-
-        <div class="card m-3 pb-3 col-md-5" style="width: 18rem;">
-          <img src="img/932772_m.jpg" class="card-img-top" alt="...">
-
-          
-          <div class="card-body">
-            <h5 class="card-title">渋谷</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.afdafdfsadfdsafdsafdsfsadfsad</p>
-          </div>
-          <a href="#" class="btn btn-primary">詳しくみる</a>
-          
-
-        </div>
-        <div class="card m-3 pb-3 col-md-5" style="width: 18rem;">
-          <img src="img/932772_m.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">池袋</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-          <a href="#" class="btn btn-primary">詳しくみる</a>
-        </div>
       </div>
     </div>
     <div class="col-md-4">

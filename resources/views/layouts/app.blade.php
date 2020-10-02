@@ -79,7 +79,7 @@
     </main>
     <footer class="footer text-center bg-white shadow-sm">
       <div class="container">
-        <ul class="list-inline mb-5">
+        <ul class="list-inline mb-3 mt-3">
           <li class="list-inline-item">
             <a class="social-link rounded-circle mr-3" href="#!">
               <i class="fab fa-facebook fa-2x"></i>

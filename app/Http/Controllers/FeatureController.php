@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Feature;
+use App\Prefecture;
 
 
 class FeatureController extends Controller
@@ -29,8 +30,10 @@ class FeatureController extends Controller
 
     public function edit($id) {
         $feature = Feature::find($id);
+        $features = Feature::all();
         $params = [
             'feature' => $feature,
+            'features' => $features,
         ];
         return view('feature.edit', $params);
     }
@@ -54,9 +57,11 @@ class FeatureController extends Controller
     
     public function show($id) {
         $feature = Feature::find($id);
+        $prefectures = Prefecture::all();
         $params = [
             'feature' => $feature,
+            'prefectures' => $prefectures,
         ];
-        return view('features.show', $params);
+        return view('feature.show', $params);
     }
 }
