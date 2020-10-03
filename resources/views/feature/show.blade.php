@@ -8,11 +8,11 @@
       <ul class="nav nav-pills justify-content-center">
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-map-marker-alt"></i> 地域から探す
+            <i class="fas fa-map-marker-alt"></i> 地域から絞る
           </a>
           <div class="dropdown-menu">
             @foreach($prefectures as $prefecture)
-              <a href="#" class="dropdown-item">{{ $prefecture->name }}</a>
+              <a href="{{ route('feature_prefecture', [$feature->id, $prefecture->id]) }}" class="dropdown-item">{{ $prefecture->name }}</a>
             @endforeach
           </div>
         </li>

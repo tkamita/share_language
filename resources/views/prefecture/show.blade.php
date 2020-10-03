@@ -8,11 +8,11 @@
       <ul class="nav nav-pills justify-content-center">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bullseye"></i>特徴から探す
+            <i class="fas fa-bullseye"></i>特徴から絞る
           </a>
           <div class="dropdown-menu">
             @foreach($features as $feature)
-              <a class="dropdown-item" href="#">{{ $feature->content }}</a>
+              <a class="dropdown-item" href="{{ route('prefecture_feature', [$prefecture->id, $feature->id]) }}">{{ $feature->content }}</a>
             @endforeach
           </div>
         </li>
