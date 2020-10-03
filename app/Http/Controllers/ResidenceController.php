@@ -80,9 +80,11 @@ class ResidenceController extends Controller
     public function edit($id) {
         $residence = Residence::find($id);
         $prefectures = Prefecture::all();
+        $features = Feature::all();
         $params = [
             'prefectures' => $prefectures,
             'residence' => $residence,
+            'features' => $features,
         ];
         return view('residence.edit', $params);
     }

@@ -26,7 +26,7 @@
             <div class="col-sm-10">
               @foreach($features as $feature)
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="feature" value="{{ $feature->id }}" name="features[]">
+                  <input class="form-check-input" type="checkbox" id="feature" value="{{ $feature->id }}" name="features[{{ $feature->id }}]" {{ (old('features.'.$feature->id) == $feature->id) ? 'checked' : '' }}>
                   <label class="form-check-label" for="feature">{{ $feature->content }}</label>
                 </div>
               @endforeach
