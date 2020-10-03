@@ -112,6 +112,10 @@ class ResidenceController extends Controller
             $image->file_name = str_replace('public/img','',$filename);
             $image->save();
         }
+
+        if($request['features']) {
+            $residence->features()->sync($request->features);
+        }
         
         return redirect()->route('residences.show', $residence);
     }
