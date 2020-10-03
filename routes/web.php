@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('top', 'HomeController@top')->name('top');
+Route::get('/prefectures/{prefecture}/features/{feature}', 'PrefectureController@prefecture_feature')->name('prefecture_feature');
 Route::resource('residences', 'ResidenceController');
 Route::resource('prefectures', 'PrefectureController');
 Route::resource('images', 'ImageController');

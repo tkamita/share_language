@@ -126,5 +126,5 @@ class ResidenceController extends Controller
         return redirect()->route('residences.index');
     }
 
-
+    
 }
