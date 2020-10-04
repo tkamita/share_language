@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Http\Request;
 
 class Residence extends Model
 {
@@ -29,5 +30,8 @@ class Residence extends Model
     public function images() {
         return $this->hasMany(Image::class);
     }
-    
+
+    // public static function residence_search() {
+
+    // }
 }

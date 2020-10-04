@@ -67,8 +67,9 @@
               </li>
             @endguest
           </ul>
-          <form class="form-inline my-2 my-lg-0 ml-5">
-            <input class="form-control mr-sm-2" type="search" placeholder="探す" aria-label="Search">
+          <form action="{{ route('search') }}" method="GET" class="form-inline my-2 my-lg-0 ml-5">
+            @csrf
+            <input class="form-control mr-sm-2" type="search" placeholder="探す" aria-label="Search" name="keyword">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">探す</button>
           </form>
         </div>
