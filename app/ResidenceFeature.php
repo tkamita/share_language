@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Prefecture;
+use App\Residence;
+use App\Feature;
 
 class ResidenceFeature extends Model
 {
@@ -17,4 +20,6 @@ class ResidenceFeature extends Model
     public function feature() {
         return $this->belongsTo(Feature::class);
     }
+
 }
+

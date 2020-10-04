@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Residence;
 use App\Image;
 use App\Prefecture;
+use App\Feature;
 // use Intervention\Image\Facades\Image;
 // use \InterventionImage;
 // use Illuminate\Database\Eloquent\Model;
@@ -21,8 +22,10 @@ class ResidenceController extends Controller
 
     public function create() {
         $prefectures = Prefecture::all();
+        $features = Feature::all();
         $params = [
             'prefectures' => $prefectures,
+            'features' => $features
         ];
         return view('residence.create', $params);
     }
@@ -52,19 +55,14 @@ class ResidenceController extends Controller
         $filename = $request->file('file_name')->store('public/img');
         $image->file_name = str_replace('public/img','',$filename);
         $image->save();
-        
-        // $image = new Image;
-        // $image->file_name = $request->file_name;
-        // $image->residence_id = $residence->id;
-        // $image->save();
+        // dd($request);
 
-        // $file = $request->file('file_name');
-        // $name = $file->getClientOriginalName();
-        // $save_path = 'public/img/'.$name;
-        // $image = Image::make($file)->resize(640, 427, function ($constraint) {
-        //     $constraint->aspectRatio();
-        // });
-        // Storage::put($save_path, (string) $image->encode());
+        
+        $residence->features()->attach($request->features);
+
+
+        // $edit_post->tags()->sync($tags_id);　ここが重要です。
+        
         
 
         return redirect()->route('residences.show', $residence);
@@ -82,9 +80,11 @@ class ResidenceController extends Controller
     public function edit($id) {
         $residence = Residence::find($id);
         $prefectures = Prefecture::all();
+        $features = Feature::all();
         $params = [
             'prefectures' => $prefectures,
             'residence' => $residence,
+            'features' => $features,
         ];
         return view('residence.edit', $params);
     }
@@ -112,6 +112,10 @@ class ResidenceController extends Controller
             $image->file_name = str_replace('public/img','',$filename);
             $image->save();
         }
+
+        if($request['features']) {
+            $residence->features()->sync($request->features);
+        }
         
         return redirect()->route('residences.show', $residence);
     }
@@ -122,5 +126,5 @@ class ResidenceController extends Controller
         return redirect()->route('residences.index');
     }
 
-
+    
 }

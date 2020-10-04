@@ -11,10 +11,10 @@ class Feature extends Model
     ];
 
     public function residences() {
-        return $this->belongsToMany('App\Residence', 'residence_feature', 'feature_id', 'residence_id');
+        return $this->belongsToMany('App\Residence', 'residence_features', 'feature_id', 'residence_id');
     }
 
-    // public function residence_features() {
-    //     return $this->hasMany(ResidenceFeature::class);
-    // }
+    public function residence_features() {
+        return $this->hasMany(ResidenceFeature::class);
+    }
 }

@@ -64,4 +64,16 @@ class FeatureController extends Controller
         ];
         return view('feature.show', $params);
     }
+
+    public function feature_prefecture($id) {
+        $prefecture = Prefecture::find($id);
+        $feature = Feature::find($id);
+        $residences = $feature->residences->where('prefectures.id', $prefecture);
+        $params = [
+            'prefecture' => $prefecture,
+            'feature' => $feature,
+            'residences' => $residences,
+        ];
+        return view('feature/prefecture', $params);
+    }
 }

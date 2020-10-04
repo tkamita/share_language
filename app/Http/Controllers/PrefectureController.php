@@ -23,4 +23,16 @@ class PrefectureController extends Controller
         ];
         return  view('prefecture.show', $params);
     }
+
+    public function prefecture_feature($id) {
+        $prefecture = Prefecture::find($id);
+        $feature = Feature::find($id);
+        $residences = $prefecture->residences->where('features.id', $feature);
+        $params = [
+            'prefecture' => $prefecture,
+            'feature' => $feature,
+            'residences' => $residences,
+        ];
+        return view('prefecture/feature', $params);
+    }
 }

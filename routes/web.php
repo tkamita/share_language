@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('top', 'HomeController@top');
+Route::get('top', 'HomeController@top')->name('top');
+Route::get('/prefectures/{prefecture}/features/{feature}', 'PrefectureController@prefecture_feature')->name('prefecture_feature');
+Route::get('/features/{feature}/prefectures/{prefecture}', 'FeatureController@feature_prefecture')->name('feature_prefecture');
 Route::resource('residences', 'ResidenceController');
 Route::resource('prefectures', 'PrefectureController');
 Route::resource('images', 'ImageController');
