@@ -71,6 +71,7 @@ class ResidenceController extends Controller
 
     public function show($id) {
         $residence = Residence::find($id);
+        // dd($residence);
         $params = [
             'residence' => $residence,
         ];
