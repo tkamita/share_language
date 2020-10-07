@@ -10,6 +10,7 @@ use App\Image;
 
 class SearchController extends Controller
 {
+    
     public function search(Request $request) {
         // $keyword = $request->input('keyword');
         $search = $request->all();
@@ -37,7 +38,15 @@ class SearchController extends Controller
             $query = Residence::where('residences.name', 'LIKE', "%{$request->keyword}%")
             // $query->where('residences.name', 'LIKE', "%{$request->keyword}%")
                   ->orWhere('location', 'LIKE', "%{$request->keyword}%")
-                  ->orWhere('introduction', 'LIKE', "%{$request->keyword}%");
+                //   ->orWhere('introduction', 'LIKE', "%{$request->keyword}%");
+                  ->orWhere('introduction', 'LIKE', "%{$request->keyword}%")
+                  ->join('features', function ($query) use ($request) {
+                      $query->on('residences->features.id', '=', 'feature.id');
+                      $query->where('content', 'LIKE', "%{$request->keyword}%");
+                  });
+                //   ->whereHas('features', function ($query) use ($request) {
+                //       $query->where('content', 'LIKE', "%{$request->keyword}%");
+                //   });
                 //   ->orWhere('minimum_rent', '>=', $request->minimum_rent)
                 //   ->orWhere('maximum_rent', '<=', $request->maximum_rent)
                 //   ->orWhere('common_charge', '<=', $request->common_charge)
