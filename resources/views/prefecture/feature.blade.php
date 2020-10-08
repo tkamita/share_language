@@ -21,7 +21,7 @@
     <div class="border col-md-12 mb-5"></div>
     <div class="col-md-8">
       <div class="d-flex flex-row bd-highlight mb-3 row">
-        @foreach($prefecture->residences as $residence)
+        @foreach($residences as $residence)
         <div class="card m-3 pb-3 col-md-5" style="width: 18rem;">
           <img src="{{ asset('storage/img/'.$residence->images[0]->file_name) }}" class="card-img-top" alt="...">
           <div class="card-body">
