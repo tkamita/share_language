@@ -41,7 +41,7 @@
                 <a class="nav-link" href="{{ route('top') }}"><i class="fas fa-home"></i> Top</a>
               </li>
               <li class="nav-item" >
-                <a class="nav-link" href="#"><i class="fas fa-eject"></i> About</a>
+                <a class="nav-link" href="{{ route('about') }}"><i class="fas fa-eject"></i> About</a>
               </li>
               @else
                 <li class="nav-item">
