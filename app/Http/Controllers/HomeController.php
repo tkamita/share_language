@@ -35,8 +35,12 @@ class HomeController extends Controller
         ];
         return view('home', $params);
     }
-
+    
     public function top() {
         return view('top');
+    }
+    
+    public function about() {
+        return view('about');
     }
 }
