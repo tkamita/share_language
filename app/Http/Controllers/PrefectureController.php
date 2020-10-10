@@ -25,24 +25,19 @@ class PrefectureController extends Controller
         return  view('prefecture.show', $params);
     }
 
-    public function prefecture_feature($id) {
-        $prefecture = Prefecture::find($id);
-        $feature = Feature::find($id);
-        $prefectures = Prefecture::all();
+    public function prefecture_feature($prefecture, $feature) {
+        $prefecture = Prefecture::find($prefecture);
+        $feature = Feature::find($feature);
         $features = Feature::all();
-        // $residences = $prefecture->residences->where('features.id', $feature);
+        // dd($feature);
+        // $residences = $prefecture->residences()->where('features.id', $feature)->get();
         // $residences = $prefecture->residences->whereHas('features', function ($query) {$query->where('features.id', '=', '$feture');});
-        $residences = Residence::whereHas('prefecture', function ($query) { $query->where('prefectures.id', '=', '$prefecture.id'); })
-        // $residences = Residence::where('prefecture_id', '=', '$prefecture');
-                                ->whereHas('features', function ($query) { $query->where('features.id', '=', '$feature.id'); })->get();
-                                // dd($residences);
-        // $query = Residence::query();
-        // $query->whereHas('prefecture', function ($query) { $query->where('prefectures.id', '=', '$prefecture'); });
-        // $query->whereHas('features', function ($query) { $query->where('features.id', '=', '$feature'); });
-        // $residences = $query->get();
+        $residences = Residence::whereHas('prefecture', function ($query) { $query->where('prefectures.id', '=', '$prefecture'); })
+                                ->whereHas('features', function ($query) { $query->where('features.id', '=', '$feature'); })->get();
+        // $residences = Residence::whereHas('features', function ($query) { $query->where('features.id', '=', '$feature'); })->get();
+                                dd($residences);
         $params = [
             'prefecture' => $prefecture,
-            'prefectures' => $prefectures,
             'feature' => $feature,
             'features' => $features,
             'residences' => $residences,
