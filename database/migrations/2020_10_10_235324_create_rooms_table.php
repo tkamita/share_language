@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\FaceWindow;
+use App\Enums\FloorInfo;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,12 +23,13 @@ class CreateRoomsTable extends Migration
             $table->integer('extent');
             $table->integer('rent');
             $table->integer('common_charge');
-            $table->enum('')
+            $table->enum('floor_info', FloorInfo::getValues());
+            $table->enum('face_window', FaceWindow::getValues());
             $table->boolean('room_info')->default(false);
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

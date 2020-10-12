@@ -29,6 +29,7 @@ Route::resource('residences', 'ResidenceController');
 Route::resource('prefectures', 'PrefectureController');
 Route::resource('images', 'ImageController');
 Route::resource('features', 'FeatureController');
+Route::resource('rooms', 'RoomController');
 
 
 // Route::group(['middleware' => ['auth']], function(){
