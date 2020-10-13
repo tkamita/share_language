@@ -30,6 +30,9 @@
                 <a href="{{ route('residences.create') }}" class="">物件登録画面</a>
               </li>
               <li class="list-group-item">
+                <a href="{{ route('rooms.create') }}" class="">部屋登録画面</a>
+              </li>
+              <li class="list-group-item">
                 <a href="{{ route('features.index') }}" class="">特徴登録画面</a>
               </li>
             </ul>
